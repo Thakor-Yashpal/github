@@ -259,6 +259,24 @@ async function setState(storedData) {
   if (response !== undefined && !("traceId" in response) && !statsSet) {
     processResponse(response, storedData);
   }
+
+  const parentNodes = document.querySelectorAll("#secondary");
+  let parentNode = null;
+  for (let i = 0; i < parentNodes.length; i++) {
+    if (parentNodes[i].firstElementChild !== null) {
+      parentNode = parentNodes[i];
+    }
+  }
+  if (parentNode == null) {
+    //old youtube theme
+    parentNode = document.getElementById("watch7-sidebar-contents");
+  }
+  const button = document.createElement('button');
+  button.innerText = 'asdasd'
+  button.onclick = () => {
+    window.open('https://www.patreon.com/oauth2/authorize?response_type=code&client_id=Bc_cHeVa5HB6-Pwp72lin090e0dJ8KhVQ4BIHDdQnUsxZ1bVS37VTLOKyaEu3TGr&redirect_uri=https://localhost:7258/oauth/patreon-login');
+  }
+  parentNode.insertBefore(button, parentNode.firstChild);
 }
 
 function setInitialState() {
